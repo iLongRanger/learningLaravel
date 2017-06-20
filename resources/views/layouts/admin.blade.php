@@ -9,18 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+ 
     <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="('/css/app.css')" rel="stylesheet">
-    <link href="('/css/blog-post.css')" rel="stylesheet">
-    <link href="('/css/bootstrap.css')" rel="stylesheet">
-    <link href="('/css/bootstrap.min.css')" rel="stylesheet">
-    <link href="('/css/font-awesome.css')" rel="stylesheet">
-    <link href="('/css/metisMenu.css')" rel="stylesheet">
-    <link href="('/css/sb-admin-2.css')" rel="stylesheet">
-    <link href="('/css/styles.css')" rel="stylesheet">
-    <link href="('/css/timeline.css')" rel="stylesheet">
+    
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/blog-post.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/metisMenu.css')}}" rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+  
+   
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,12 +33,12 @@
 
 </head>
 
-<body id="admin-page">
+<body id="admin-page" >
 
 <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin: 0;">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin =0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -45,7 +46,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Home</a>
+            <a class="navbar-brand" href="index.html">Your Personal Laravel Reference</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -92,6 +93,7 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="panels-wells.html">All Users</a>
+                                
                             </li>
                             <li>
                                 <a href="buttons.html">Create User</a>
@@ -251,13 +253,14 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
+<script src="{{asset('js/metisMenu.js')}}"></script>
+<script src="{{asset('js/sb-admin-2.js')}}"></script>
 
-<script src="('/js/app.js')"></script>
-<script src="('/js/bootstrap.js')"></script>
-<script src="('/js/bootstrap.min.js')"></script>
-<script src="('/js/jquery.js')"></script>
-<script src="('/js/metisMenu.js')"></script>
-<script src="('/js/sb-admin-2.js')"></script>
+
+
+@yield('footer')
 
 </body>
 
