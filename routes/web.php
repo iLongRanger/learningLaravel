@@ -32,4 +32,5 @@ Route::get('admin/users/index', function(){
     return view('admin.users.index');
 
 });
+Route::get('admin/users/edit/{id}', 'AdminUsersController@edit');
 

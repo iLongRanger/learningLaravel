@@ -5,7 +5,7 @@
  */
 
 body {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 #wrapper {
@@ -88,6 +88,7 @@ body {
 .sidebar .sidebar-nav.navbar-collapse {
     padding-right: 0;
     padding-left: 0;
+
 }
 
 .sidebar .sidebar-search {
@@ -96,6 +97,7 @@ body {
 
 .sidebar ul li {
     border-bottom: 1px solid #e7e7e7;
+
 }
 
 .sidebar ul li a.active {

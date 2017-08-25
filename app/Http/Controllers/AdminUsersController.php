@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use App\Role;
 use App\Photo;
 use Illuminate\Http\Request;
+
 
 class AdminUsersController extends Controller
 {
@@ -62,6 +64,8 @@ class AdminUsersController extends Controller
         $input['password']= bcrypt($request->password);
         // if photo is not existed
         User::create($input); // will save everything on database
+
+        return redirect('admin/users');
     }
 
     /**
@@ -84,6 +88,12 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         //
+        $roles = Role::pluck('name', 'id')->all();
+
+        $user = User::findorFail($id); // to edit the selected user
+
+            return view ('admin.users.edit', compact('user', 'roles')); // will display user with the id selected on edit view
+
     }
 
     /**
@@ -93,10 +103,32 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
-        //
+        // find the user with the selected id
+        $user = User::findOrFail($id);
+        $input = $request->all(); // will get all user data
+
+        //check if photo is existing
+        if($file = $request->file('photo_id')){
+
+            //make a name for the photo
+            $name = time(). $file->getClientOriginalName();
+            //move to images folder
+            $file->move('images' , $name);
+            //create a photo
+            $photo= Photo::create(['file'=>$name]);
+            // will save photo id and name
+            $input['photo_id'] = $photo->id;
+
+        }
+
+        $user->Update($input); //will update the data on database
+
+        return redirect('/admin/users');
+
     }
+
 
     /**
      * Remove the specified resource from storage.
