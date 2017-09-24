@@ -46,7 +46,17 @@ class AdminUsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $input = $request->all(); // to persist data on database
+        //function for password
+
+        if(trim($request->password)== ' '){
+
+            $input = $request->except('password');
+
+        }else{
+
+            $input = $request->all(); // to persist data on database
+
+        }
 
         if ($file =$request->file('photo_id')){ // will validate if photo existed before saving to database
 
@@ -107,7 +117,8 @@ class AdminUsersController extends Controller
     {
         // find the user with the selected id
         $user = User::findOrFail($id);
-        $input = $request->all(); // will get all user data
+        $input = $request->all(); // to persist data on database
+
 
         //check if photo is existing
         if($file = $request->file('photo_id')){
@@ -123,6 +134,7 @@ class AdminUsersController extends Controller
 
         }
 
+       // $input['password']= bcrypt($request->password); //to encrypt password
         $user->Update($input); //will update the data on database
 
         return redirect('/admin/users');
