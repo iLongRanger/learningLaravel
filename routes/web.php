@@ -36,6 +36,7 @@ Route::group(['middleware'=>'admin'] , function(){
 
     });
     Route::get('admin/users/edit/{id}', 'AdminUsersController@edit');
+    Route::get('admin/users/delete/{id}', 'AdminUsersController@destroy');
 
 });
 
