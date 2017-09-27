@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/auth/login', 'HomeController@index')->name('home');
 
 Route::get('/admin', function () {
     
@@ -25,12 +25,17 @@ Route::get('/admin', function () {
 });
 
 
-//routes for admin/users
-Route::resource('admin/users', 'AdminUsersController');
-Route::get('admin/users/index', function(){
 
-    return view('admin.users.index');
+Route::group(['middleware'=>'admin'] , function(){
+
+    //routes for admin/users
+    Route::resource('admin/users', 'AdminUsersController');
+    Route::get('admin/users/index', function(){
+
+        return view('admin.users.index');
+
+    });
+    Route::get('admin/users/edit/{id}', 'AdminUsersController@edit');
 
 });
-Route::get('admin/users/edit/{id}', 'AdminUsersController@edit');
 

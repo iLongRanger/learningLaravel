@@ -44,6 +44,11 @@
                 {!!Form::select('is_active', array(1=>'Active',0=>'Inactive'), null,  ['class'=>'form-control'])!!}
             </div>
 
+            <div class="form-group">
+                {!!Form::label('password', 'Password:')!!}
+                {!!Form::password('password', ['class'=>'form-control'])!!}
+            </div>
+
             <div class = "form-group">
                 {!!Form::submit('Update', ['class'=>'btn btn-primary'])!!}
             </div>

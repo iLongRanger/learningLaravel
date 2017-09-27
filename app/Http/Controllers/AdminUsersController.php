@@ -115,6 +115,18 @@ class AdminUsersController extends Controller
      */
     public function update(UserEditRequest $request, $id)
     {
+
+        //function for password
+
+        if(trim($request->password)== ' '){
+
+            $input = $request->except('password');
+
+        }else{
+
+            $input = $request->all(); // to persist data on database
+
+        }
         // find the user with the selected id
         $user = User::findOrFail($id);
         $input = $request->all(); // to persist data on database
@@ -134,7 +146,7 @@ class AdminUsersController extends Controller
 
         }
 
-       // $input['password']= bcrypt($request->password); //to encrypt password
+        $input['password']= bcrypt($request->password); //to encrypt password
         $user->Update($input); //will update the data on database
 
         return redirect('/admin/users');
