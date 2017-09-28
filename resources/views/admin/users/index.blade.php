@@ -18,6 +18,17 @@
         <p class="alert alert-warning">{{session('updated_user')}}</p>
     @endif
 
+
+
+
+
+    @if(Session::has('notAdmin'))
+    <script>
+        <p class="alert alert-danger">{{session('notAdmin')}}</p>
+    </script>
+    @endif
+
+
     <h1>Users</h1>
 
     <table class="table table-striped"  class = "container-fluid">

@@ -1,7 +1,8 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Popoy
- * Date: 9/27/2017
- * Time: 11:32 PM
- */
+<script>
+
+    alert("You do not have permission");
+    window.location="/admin";
+
+
+</script>
+

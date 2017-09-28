@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Admin
 {
@@ -22,11 +23,11 @@ class Admin
 
             if(Auth::user()->isAdmin()){ // check if the user is admin
                 return $next($request); // will continue the next request
-
             }
         }
 
-        return redirect('/');
+        return redirect('errors/503');
+
 
 
     }
